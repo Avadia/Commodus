@@ -32,10 +32,10 @@ public class UUIDFetcherTest {
     @Test
     public void testCaching() {
         try {
-            UUIDFetcher.getUUIDOf("Vexil_"); // Load "Vexil_" into the UUIDFetcher's Cache
+            UUIDFetcher.getUUIDOf("Techcable"); // Load "Techcable" into the UUIDFetcher's Cache
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(true, UUIDFetcher.getCache().asMap().containsKey("Vexil_"));
+        Assert.assertEquals(true, UUIDFetcher.getCache().asMap().containsKey("Techcable"));
     }
 }
