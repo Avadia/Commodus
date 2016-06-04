@@ -19,8 +19,20 @@ package com.dsh105.commodus.config;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
+
+import com.google.common.base.Charsets;
 
 public class YAMLConfigManager {
 
@@ -102,7 +114,7 @@ public class YAMLConfigManager {
         try {
             String currentLine;
             StringBuilder config = new StringBuilder("");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charsets.UTF_8));
 
             while ((currentLine = reader.readLine()) != null) {
                 config.append(currentLine + "\n");
@@ -137,7 +149,7 @@ public class YAMLConfigManager {
 
             config.append("# +----------------------------------------------------+ #");
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8));
             writer.write(this.prepareConfigString(config.toString()));
             writer.flush();
             writer.close();
@@ -161,7 +173,7 @@ public class YAMLConfigManager {
             String pluginName = this.getPluginName();
 
             StringBuilder whole = new StringBuilder("");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charsets.UTF_8));
 
             while ((currentLine = reader.readLine()) != null) {
 
@@ -178,7 +190,7 @@ public class YAMLConfigManager {
 
             String config = whole.toString();
             InputStream configStream = new ByteArrayInputStream(
-                    config.getBytes(Charset.forName("UTF-8")));
+                    config.getBytes(Charsets.UTF_8));
 
             reader.close();
             return configStream;
@@ -198,7 +210,7 @@ public class YAMLConfigManager {
             int comments = 0;
             String currentLine;
 
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charsets.UTF_8));
 
             while ((currentLine = reader.readLine()) != null) {
 
@@ -295,7 +307,7 @@ public class YAMLConfigManager {
         String configuration = this.prepareConfigString(configString);
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8));
             writer.write(configuration);
             writer.flush();
             writer.close();

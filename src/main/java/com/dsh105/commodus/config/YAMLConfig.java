@@ -17,17 +17,18 @@
 
 package com.dsh105.commodus.config;
 
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Set;
+
+import com.google.common.base.Charsets;
+
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import java.util.Set;
 
 public class YAMLConfig {
 
@@ -43,11 +44,7 @@ public class YAMLConfig {
         this.manager = new YAMLConfigManager(plugin);
 
         this.file = configFile;
-        try {
-            this.config = YamlConfiguration.loadConfiguration(new InputStreamReader(configStream, "UTF-8"));
-        } catch (NoSuchMethodError | UnsupportedEncodingException e) {
-            this.config = YamlConfiguration.loadConfiguration(configStream);
-        }
+        this.config = YamlConfiguration.loadConfiguration(new InputStreamReader(configStream, Charsets.UTF_8));
         this.plugin = plugin;
     }
 
