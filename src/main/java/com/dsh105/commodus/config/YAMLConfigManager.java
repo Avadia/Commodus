@@ -17,6 +17,7 @@
 
 package com.dsh105.commodus.config;
 
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
@@ -36,9 +37,9 @@ import com.google.common.base.Charsets;
 
 public class YAMLConfigManager {
 
-    private JavaPlugin plugin;
+    private Plugin plugin;
 
-    public YAMLConfigManager(JavaPlugin plugin) {
+    public YAMLConfigManager(Plugin plugin) {
         this.plugin = plugin;
     }
 

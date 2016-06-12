@@ -28,6 +28,7 @@ import com.google.common.base.Charsets;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class YAMLConfig {
@@ -37,9 +38,9 @@ public class YAMLConfig {
 
     private File file;
     private FileConfiguration config;
-    private JavaPlugin plugin;
+    private Plugin plugin;
 
-    public YAMLConfig(InputStream configStream, File configFile, int comments, JavaPlugin plugin) {
+    public YAMLConfig(InputStream configStream, File configFile, int comments, Plugin plugin) {
         this.comments = comments;
         this.manager = new YAMLConfigManager(plugin);
 
