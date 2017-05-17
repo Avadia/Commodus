@@ -22,8 +22,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.ByteArrayInputStream;
+import java.io.StringReader;
 import java.io.File;
+import java.io.Reader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -161,7 +162,7 @@ public class YAMLConfigManager {
 
     }
 
-    public InputStream getConfigContent(File file) {
+    public Reader getConfigContent(File file) {
         if (!file.exists()) {
             return null;
         }
@@ -189,12 +190,9 @@ public class YAMLConfigManager {
 
             }
 
-            String config = whole.toString();
-            InputStream configStream = new ByteArrayInputStream(
-                    config.getBytes(Charsets.UTF_8));
 
             reader.close();
-            return configStream;
+            return new StringReader(whole.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -230,7 +228,7 @@ public class YAMLConfigManager {
         }
     }
 
-    public InputStream getConfigContent(String filePath) {
+    public Reader getConfigContent(String filePath) {
         return this.getConfigContent(this.getConfigFile(filePath));
     }
 

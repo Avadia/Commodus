@@ -18,6 +18,7 @@
 package com.dsh105.commodus.config;
 
 import java.io.File;
+import java.io.Reader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
@@ -40,12 +41,12 @@ public class YAMLConfig {
     private FileConfiguration config;
     private Plugin plugin;
 
-    public YAMLConfig(InputStream configStream, File configFile, int comments, Plugin plugin) {
+    public YAMLConfig(Reader configReader, File configFile, int comments, Plugin plugin) {
         this.comments = comments;
         this.manager = new YAMLConfigManager(plugin);
 
         this.file = configFile;
-        this.config = YamlConfiguration.loadConfiguration(new InputStreamReader(configStream, Charsets.UTF_8));
+        this.config = YamlConfiguration.loadConfiguration(configReader);
         this.plugin = plugin;
     }
 

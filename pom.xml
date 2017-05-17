@@ -23,7 +23,7 @@
 
     <groupId>com.dsh105</groupId>
     <artifactId>Commodus</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,6 +44,10 @@
     <repositories>
         <!-- Bukkit -->
         <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
             <id>techcable-repo</id>
             <url>https://repo.techcable.net/content/groups/public/</url>
         </repository>
@@ -61,7 +65,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.7.9-R0.3-SNAPSHOT</version>
+            <version>1.12-pre2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -159,8 +163,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>2.10.4</version>
                 <configuration>
+                    <skip>true</skip>
                     <failOnError>false</failOnError>
                 </configuration>
                 <executions>
